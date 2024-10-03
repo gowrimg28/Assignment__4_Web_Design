@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Feedback</title>
+    <style>
+        label {
+            float: left;
+            width: 150px;
+        }
+
+        #container {
+            width: 700px;
+            margin: auto;
+            background-color: beige;
+        }
+
+        main {
+            padding: 50px;
+        }
+
+        .error {
+            color: red;
+            display: none;
+        }
+
+        .abc {
+            color: red;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-drink-select {
+            color: red;
+        }
+
+        #result-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        #result-table,
+        #result-table th,
+        #result-table td {
+            border: 1px solid black;
+        }
+
+        #result-table th,
+        #result-table td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+        <main>
+            <h2>Feedback</h2>
+            <h3>Love something? Hate something? Let us know!</h3>
+            Note : Fields marked with an asterisk(*) are mandatory
+            <br><br>
+
+            <form id="feedback-form" method="post" novalidate>
+
+                <div class="form-control-radio">
+                    <label>Title*:</label>
+                    <input type="radio" name="title" id="miss" value="miss" required="required" />Miss
+                    <input type="radio" name="title" id="mr" value="mr" required="required" />Mr.
+                    <input type="radio" name="title" id="mrs" value="mrs" required="required" />Mrs.
+                    <div class="error" id="error-title">Please select the title</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="firstName">First Name*:</label>
+                    <input type="text" name="firstName" id="firstName" placeholder="First Name" required minlength="2"
+                        maxlength="50" />
+                    <div class="error" id="error-firstName">Please enter correct First name</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="lastName">Last Name*:</label>
+                    <input type="text" name="lastName" id="lastName" placeholder="Last Name" required minlength="2"
+                        maxlength="50" />
+                    <div class="error" id="error-lastName">Please enter correct Last name</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="emailId">Email Id*:</label>
+                    <input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" required />
+                    <div class="error" id="error-emailId">Please enter correct email Id</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="phoneNumber">Phone Number*:</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" required />
+                    <div class="error" id="error-phoneNumber">Please enter correct Phone Number</div>
+                    <br><br>
+                </div>
+                <div class="form-control">
+                    <label for="address1">Street Address 1*:</label>
+                    <input type="text" name="address1" id="address1" placeholder="address" required />
+                    <div class="error" id="error-address1">Please enter Address</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="address2">Street Address 2:</label>
+                    <input type="text" name="address2" id="address2" placeholder="address" />
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="city">City*:</label>
+                    <input type="text" name="city" id="city" placeholder="city" required />
+                    <div class="error" id="error-city">Please enter correct City</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="state">State*:</label>
+                    <input type="text" name="state" id="state" placeholder="state" required />
+                    <div class="error" id="error-state">Please enter correct State</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="zipcode">ZipCode*:</label>
+                    <input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" required />
+                    <div class="error" id="error-zipcode">Please enter correct Zipcode</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="checkBoxList">How did you hear*:</label>
+                    <input type='checkbox' name="source" value="facebook" /> Facebook
+                    <input type='checkbox' name="source" value="google" /> Google
+                    <input type='checkbox' name="source" value="yelp" /> Yelp
+                    <div class="error" id="error-checkBoxList">Select at least one source.</div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="drink-select">Drinks*:</label>
+                    <select id="drink-select" name="drink" required>
+                        <option value="">--Please choose a Drink--</option>
+                        <option value="Cappuccino">Cappuccino</option>
+                        <option value="Latte">Caffe Latte</option>
+                        <option value="Coffee">Coffee</option>
+                        <option value="Americano">Americano</option>
+                        <option value="Brew">Cold Brew</option>
+                    </select>
+                    <div id="error-drink-select" class="error-drink-select" style="display: none;"></div>
+                    <br><br>
+                </div>
+
+                <div class="form-control hidden" id="large-drink-container">
+                    <input type="checkbox" id="large-drink" name="large-drink">
+                    <label for="large-drink">Large drink (75¢ extra)</label>
+                    <br><br>
+                </div>
+
+                <div class="form-control hidden" id="customization-container">
+                    <label for="customization">Any additional customization*:</label>
+                    <textarea name="text" id="additional-customization" placeholder="Additional customization" rows="5"
+                        cols="25" required minlength="2" maxlength="50"></textarea>
+                    <div class="abc" id="error-customization">Please write customization or N/A if none.
+                    </div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <label for="comments">Comments*:</label>
+                    <textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" required
+                        minlength="2" maxlength="50"></textarea>
+                    <div class="error" id="error-comments">Please leave a comment </div>
+                    <br><br>
+                </div>
+
+                <div class="form-control">
+                    <input type="Submit" value="Submit Feedback" id="submit-button" disabled>
+                    <input type="Reset">
+                    <br><br>
+                </div>
+
+            </form>
+            <div id="result-container"></div>
+
+        </main>
+    </div>
+
+    <script>
+        const regExName = /^[a-zA-Z\s]{1,50}$/;
+        const regExEmail = /^[a-zA-Z0-9._%+-]+@northeastern\.edu$/;
+        const regExPhone = /\d{3}-?\d{3}-\d{4}$/;
+        const regExZipcode = /^\d{5}$/;
+        const regExAddress = /^[a-zA-Z0-9\s,.'-]{1,}$/;
+
+        const feedbackForm = document.getElementById("feedback-form");
+        const firstname = document.getElementById("firstName");
+        const lastname = document.getElementById("lastName");
+        const emailId = document.getElementById("emailId");
+        const phoneNumber = document.getElementById("phoneNumber");
+        const addr1 = document.getElementById("address1");
+        const addr2 = document.getElementById("address2");
+        const city = document.getElementById("city");
+        const state = document.getElementById("state");
+        const zipcode = document.getElementById("zipcode");
+        const comments = document.getElementById("comments");
+        const submitButton = document.getElementById("submit-button");
+        const drinkSelect = document.getElementById("drink-select");
+        const largeDrinkContainer = document.getElementById("large-drink-container");
+        const customizationContainer = document.getElementById("customization-container");
+        const largeDrinkCheckbox = document.getElementById("large-drink");
+        const additional_customization = document.getElementById("additional-customization");
+
+        let isFirstNameValid = false, isLastNameValid = false, isEmailIDValid = false, isPhoneNumberValid = false, isZipcodeValid = false,
+            isCommentsValid = false, isTitleSelected = false, isAddr1Valid = false, isCityValid = false, isStateValid = false,
+            isAdditionalCustomizationValid = false, isDrinkValid = false, isSourceSelected = false, isTitleValid = false;
+
+        function validateDrinkSelection() {
+            const drinkValue = drinkSelect.value;
+            console.log("Selected drink value:", drinkSelect.value);
+            const drinkError = document.getElementById('error-drink-select');
+            if (drinkValue === "") {
+                drinkError.style.display = 'block';
+                drinkError.textContent = "Please select a drink.";
+                return false;
+            } else {
+                drinkError.style.display = 'none';
+                return true;
+            }
+        }
+
+        const validationState = {
+            isFirstNameValid: false,
+            isLastNameValid: false,
+            isEmailIDValid: false,
+            isPhoneNumberValid: false,
+            isZipcodeValid: false,
+            isCommentsValid: false,
+            isAddr1Valid: false,
+            isCityValid: false,
+            isStateValid: false,
+            isAdditionalCustomizationValid: false,
+            isDrinkValid: false,
+            isSourceSelected: false,
+            isTitleValid: false,
+
+        };
+
+        // Function to validate individual form controls
+        function validateFormControls(event) {
+            const field = event.target; // Get the field that triggered the event
+
+            // Only validate the field that triggered the event
+            if (field === firstname) {
+                validationState.isFirstNameValid = validateField(firstname, regExName, "error-firstName", true);
+            } else if (field === lastname) {
+                validationState.isLastNameValid = validateField(lastname, regExName, "error-lastName", true);
+            } else if (field === emailId) {
+                validationState.isEmailIDValid = validateField(emailId, regExEmail, "error-emailId", true);
+            } else if (field === phoneNumber) {
+                validationState.isPhoneNumberValid = validateField(phoneNumber, regExPhone, "error-phoneNumber", true);
+            } else if (field === zipcode) {
+                validationState.isZipcodeValid = validateField(zipcode, regExZipcode, "error-zipcode", true);
+            } else if (field === comments) {
+                validationState.isCommentsValid = validateField(comments, regExName, "error-comments", true);
+            } else if (field === addr1) {
+                validationState.isAddr1Valid = validateField(addr1, regExAddress, "error-address1", true);
+            } else if (field === city) {
+                validationState.isCityValid = validateField(city, regExName, "error-city", true);
+            } else if (field === state) {
+                validationState.isStateValid = validateField(state, regExName, "error-state", true);
+            } else if (field === additional_customization) {
+                validationState.isAdditionalCustomizationValid = validateField(additional_customization, regExName, "error-customization", true);
+            }
+            if (field.name === 'title') {
+                validationState.isTitleValid = validateTitleSelection();
+            }
+
+            if (field.name === 'source') {
+                validationState.isSourceSelected = validateSourceSelection();
+            }
+            if (field === drinkSelect) {
+                validationState.isDrinkValid = validateDrinkSelection();
+            }
+            updateSubmitButtonState();
+
+            // Optionally: update dependent validations here if needed, e.g., largeDrinkCheckbox.checked for additional customization
+            // submitButton.disabled = (isFirstNameValid && isLastNameValid && isEmailIDValid && isEmailIDValid &&
+            //     isPhoneNumberValid && isZipcodeValid && isDrinkValid && isCommentsValid &&
+            //     isAddr1Valid && isCityValid && isStateValid && isAdditionalCustomizationValid && isDrinkValid && isSourceSelected);
+            // // Log the updated validation states
+            console.log("Validation Flags: ", validationState);
+        }
+        function updateSubmitButtonState() {
+            const {
+                isFirstNameValid,
+                isLastNameValid,
+                isEmailIDValid,
+                isPhoneNumberValid,
+                isZipcodeValid,
+                isCommentsValid,
+                isAddr1Valid,
+                isCityValid,
+                isStateValid,
+                isAdditionalCustomizationValid,
+                isSourceSelected,
+                isDrinkValid,
+                isTitleValid
+            } = validationState;
+
+            // Check if all validation flags are true
+            const allFieldsValid = isFirstNameValid && isLastNameValid && isEmailIDValid &&
+                isPhoneNumberValid && isZipcodeValid && isCommentsValid &&
+                isAddr1Valid && isCityValid && isStateValid &&
+                isAdditionalCustomizationValid && isSourceSelected && isDrinkValid && isTitleValid;
+
+            // Enable or disable the submit button based on the validation state
+            submitButton.disabled = !allFieldsValid;
+        }
+
+        feedbackForm.addEventListener("input", validateFormControls);
+        feedbackForm.addEventListener("submit", submitForm);
+
+
+
+        // Add event listeners to each input field for validation
+        firstname.addEventListener("input", validateFormControls);
+        lastname.addEventListener("input", validateFormControls);
+        emailId.addEventListener("input", validateFormControls);
+        phoneNumber.addEventListener("input", validateFormControls);
+        zipcode.addEventListener("input", validateFormControls);
+        comments.addEventListener("input", validateFormControls);
+        city.addEventListener("input", validateFormControls);
+        state.addEventListener("input", validateFormControls);
+        addr1.addEventListener("input", validateFormControls);
+        drinkSelect.addEventListener("change", handleDrinkSelection);
+        largeDrinkCheckbox.addEventListener("change", handleCustomizationVisibility);
+        const sourceCheckboxes = document.querySelectorAll('input[name="source"]');
+
+        sourceCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', validateSourceSelection);
+        });
+
+        // Function to check if at least one source is selected
+        function validateSourceSelection() {
+            const checkboxes = document.querySelectorAll('input[name="source"]');
+            const sourceError = document.getElementById('error-checkBoxList');
+            let isSourceSelected = false;
+
+
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    isSourceSelected = true;
+                }
+            });
+
+            if (!isSourceSelected) {
+                sourceError.style.display = 'block';
+                sourceError.textContent = "Please select at least one source.";
+                return false;
+            } else {
+                sourceError.style.display = 'none';
+                return true;
+            }
+        }
+        function validateTitleSelection() {
+            const titleOptions = document.querySelectorAll('input[name="title"]');
+            const titleError = document.getElementById('error-title');
+            let isSelected = false;
+
+            titleOptions.forEach(option => {
+                if (option.checked) {
+                    isSelected = true;
+                }
+            });
+
+            if (!isSelected) {
+                titleError.style.display = "block";
+                titleError.textContent = "Please select a title.";
+                return false;
+            } else {
+                titleError.style.display = "none";
+                return true;
+            }
+        }
+
+        const titleRadios = document.querySelectorAll('input[name="title"]');
+        titleRadios.forEach((radio) => {
+            radio.addEventListener('change', validateFormControls);
+        });
+
+        function validateField(field, regex, errorFieldId, shouldValidate) {
+            const value = field.value.trim();
+            const errorField = document.getElementById(errorFieldId);
+            isValid = false;
+            if (shouldValidate) {
+                if (value === "") {
+                    errorField.style.display = "block";
+                    errorField.textContent = "This field is required.";
+                    console.log(`${field.id} is empty.`);
+                    isValid = false;
+                } else if (!value.match(regex)) {
+                    errorField.style.display = "block";
+                    errorField.textContent = "Invalid input.";
+                    console.log(`${field.id} is invalid.`);
+                    isValid = false;
+                } else {
+                    errorField.style.display = "none";
+                    console.log(`${field.id} is valid.`);
+                    isValid = true;
+                }
+            }
+            console.log("Field:", isValid)
+            return isValid;
+        }
+
+        function clearErrorMessages() {
+            const errorElements = document.querySelectorAll('.error');
+            const errorDrink = document.querySelectorAll('.error-drink-select');
+            errorDrink.forEach(error => {
+                error.style.display = 'none';
+            });
+            errorElements.forEach(error => {
+                error.style.display = 'none';
+            });
+        }
+
+        // Add an event listener for the reset button
+        const resetButton = document.querySelector('input[type="reset"]');
+        resetButton.addEventListener('click', function (event) {
+            clearErrorMessages();
+            largeDrinkContainer.classList.add("hidden");
+            customizationContainer.classList.add("hidden");
+            submitButton.disabled = true; // Disable submit button again
+        });
+
+        function handleDrinkSelection() {
+            if (drinkSelect.value) {
+                largeDrinkCheckbox.checked = false;
+                largeDrinkContainer.classList.remove("hidden");
+                additional_customization.value = ""
+                customizationContainer.classList.add("hidden");
+            } else {
+                largeDrinkContainer.classList.add("hidden");
+                customizationContainer.classList.add("hidden"); // Hide customization if drink is not selected
+            }
+        }
+
+        function handleCustomizationVisibility() {
+            if (largeDrinkCheckbox.checked) {
+                customizationContainer.classList.remove("hidden"); // Show customization if checkbox is checked
+            } else {
+                customizationContainer.classList.add("hidden"); // Hide customization if checkbox is unchecked
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            largeDrinkContainer.classList.add("hidden"); // Ensure it's hidden initially
+            customizationContainer.classList.add("hidden");
+
+        });
+
+
+        function submitForm(event) {
+            event.preventDefault(); // Prevent form submission
+            alert("Form Submitted Successfully !!!");
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.innerHTML = `
+            <h3>Submitted Data:</h3>
+            <table id="result-table">
+                <tr><th>Field</th><th>Value</th></tr>
+                <tr><td>First Name</td><td>${firstname.value}</td></tr>
+                <tr><td>Last Name</td><td>${lastname.value}</td></tr>
+                <tr><td>Email</td><td>${emailId.value}</td></tr>
+                <tr><td>Phone Number</td><td>${phoneNumber.value}</td></tr>
+                <tr><td>Address 1</td><td>${addr1.value}</td></tr>
+                <tr><td>Address 2</td><td>${addr2.value}</td></tr>
+                <tr><td>City</td><td>${city.value}</td></tr>
+                <tr><td>State</td><td>${state.value}</td></tr>
+                <tr><td>Zipcode</td><td>${zipcode.value}</td></tr>
+                <tr><td>Drink</td><td>${drinkSelect.value}</td></tr>
+                <tr><td>Large Drink</td><td>${largeDrinkCheckbox.checked ? 'Yes' : 'No'}</td></tr>
+                <tr><td>Customization</td><td>${additional_customization.value}</td></tr>
+                <tr><td>Comments</td><td>${comments.value}</td></tr>
+            </table>
+        `;
+            feedbackForm.reset();
+            submitButton.disabled = true; // Disable the submit button again
+            clearErrorMessages();
+            largeDrinkContainer.classList.add("hidden");
+            customizationContainer.classList.add("hidden");
+
+
+        }
+
+        // Function to generate the result table
+        function displayResultTable(data) {
+            const resultContainer = document.getElementById('result-container');
+
+            // Clear previous table if any
+            resultContainer.innerHTML = '';
+
+            // Create a table element
+            const table = document.createElement('table');
+            table.id = 'result-table';
+
+            // Create the header row
+            const headerRow = document.createElement('tr');
+            for (const key in data) {
+                const th = document.createElement('th');
+                th.textContent = key;
+                headerRow.appendChild(th);
+            }
+            table.appendChild(headerRow);
+
+            // Create the data row
+            const dataRow = document.createElement('tr');
+            for (const key in data) {
+                const td = document.createElement('td');
+                td.textContent = data[key];
+                dataRow.appendChild(td);
+            }
+            table.appendChild(dataRow);
+
+            // Append the table to the result container
+            resultContainer.appendChild(table);
+        }
+
+    </script>
+
+</body>
+
+</html>
